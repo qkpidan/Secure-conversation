@@ -1,40 +1,40 @@
 /*
 *@date              :2020-07-01
 *@author            :马朝阳
-*@brief             :aes
+*@brief             :rsa
 *@version
 *
 */
 
-#include "stdio.h"
-#include "malloc.h"
-#include "aes.h"
+#include <stdio.h>
+#include <malloc.h>
+#include <librsa.h>
 
-typedef struct _AesPrivate		 AesPrivate;
-struct  _AesPrivate
+typedef struct _RsaPrivate		 RsaPrivate;
+struct  _RsaPrivate
 {
 
 };
 
-static void aes_constructor(Aes *self)
+static void rsa_constructor(Rsa *self)
 {
 }
 
-static void aes_destructor(Aes *self)
+static void rsa_destructor(Rsa *self)
 {
 }
 
-Aes *aes_new(void)
+Rsa *rsa_new(void)
 {
-	Aes *self = (Aes*)malloc(sizeof(Aes));
-	aes_constructor(self);
+	Rsa *self = (Rsa*)malloc(sizeof(Rsa));
+	rsa_constructor(self);
 	return self;
 }
 
-int aes_destory(Aes *self)
+int rsa_destory(Rsa *self)
 {
 	if(self)
-		aes_destructor(self);
+		rsa_destructor(self);
 	
 	return 0;
 }

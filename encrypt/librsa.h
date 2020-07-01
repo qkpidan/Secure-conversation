@@ -1,20 +1,20 @@
 /*
 *@date              :2020-07-01
 *@author            :马朝阳
-*@brief             :aes
+*@brief             :rsa
 *@version
 *
 */
 
-#ifndef __AES_H__
-#define __AES_H__
+#ifndef __RSA_H__
+#define __RSA_H__
 
-typedef struct _Aes		Aes;
-struct _Aes{
+typedef struct _Rsa		Rsa;
+struct _Rsa{
 
 };
 
-Aes 				*aes_new(void);
-int 				aes_destory(Aes *self);
+Rsa 				*rsa_new(void);
+int 				rsa_destory(Rsa *self);
 
 #endif

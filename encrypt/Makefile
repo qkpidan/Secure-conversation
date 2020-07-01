@@ -95,10 +95,10 @@ AM_V_AR = $(am__v_AR_$(V))
 am__v_AR_ = $(am__v_AR_$(AM_DEFAULT_VERBOSITY))
 am__v_AR_0 = @echo "  AR      " $@;
 am__v_AR_1 = 
-librsa_a_AR = $(AR) $(ARFLAGS)
-librsa_a_DEPENDENCIES =
-am_librsa_a_OBJECTS = librsa.$(OBJEXT)
-librsa_a_OBJECTS = $(am_librsa_a_OBJECTS)
+libencrypt_a_AR = $(AR) $(ARFLAGS)
+libencrypt_a_DEPENDENCIES =
+am_libencrypt_a_OBJECTS = librsa.$(OBJEXT) libaes.$(OBJEXT)
+libencrypt_a_OBJECTS = $(am_libencrypt_a_OBJECTS)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -127,8 +127,8 @@ AM_V_CCLD = $(am__v_CCLD_$(V))
 am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(librsa_a_SOURCES)
-DIST_SOURCES = $(librsa_a_SOURCES)
+SOURCES = $(libencrypt_a_SOURCES)
+DIST_SOURCES = $(libencrypt_a_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -252,10 +252,10 @@ AUTOMAKE_OPTIONS = foreign
 #引入库文件
 AM_CPPFLAGS = -I../include  -lpthred
 AM_LDFLAGS = -w  
-noinst_LIBRARIES = librsa.a
-noinst_HEADERS = librsa.h
-librsa_a_SOURCES = librsa.c
-librsa_a_LIBADD = 
+noinst_LIBRARIES = libencrypt.a
+noinst_HEADERS = librsa.h libaes.h
+libencrypt_a_SOURCES = librsa.c libaes.c
+libencrypt_a_LIBADD = 
 all: all-am
 
 .SUFFIXES:
@@ -294,10 +294,10 @@ $(am__aclocal_m4_deps):
 clean-noinstLIBRARIES:
 	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
 
-librsa.a: $(librsa_a_OBJECTS) $(librsa_a_DEPENDENCIES) $(EXTRA_librsa_a_DEPENDENCIES) 
-	$(AM_V_at)-rm -f librsa.a
-	$(AM_V_AR)$(librsa_a_AR) librsa.a $(librsa_a_OBJECTS) $(librsa_a_LIBADD)
-	$(AM_V_at)$(RANLIB) librsa.a
+libencrypt.a: $(libencrypt_a_OBJECTS) $(libencrypt_a_DEPENDENCIES) $(EXTRA_libencrypt_a_DEPENDENCIES) 
+	$(AM_V_at)-rm -f libencrypt.a
+	$(AM_V_AR)$(libencrypt_a_AR) libencrypt.a $(libencrypt_a_OBJECTS) $(libencrypt_a_LIBADD)
+	$(AM_V_at)$(RANLIB) libencrypt.a
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -305,6 +305,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/libaes.Po
 include ./$(DEPDIR)/librsa.Po
 
 .c.o:

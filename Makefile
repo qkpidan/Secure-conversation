@@ -96,6 +96,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_kdccom_OBJECTS = main.$(OBJEXT)
 kdccom_OBJECTS = $(am_kdccom_OBJECTS)
 kdccom_LDADD = $(LDADD)
+kdccom_DEPENDENCIES = $(ROOTDIR)/encrypt/libencrypt.a
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -309,6 +310,7 @@ SUBDIRS = encrypt
 ROOTDIR = $(shell /bin/pwd)
 INCLUDES = -I$(ROOTDIR)/encrypt #指定头文件所在路径,并导出供子目录Makefile.am使用
 kdccom_SOURCES = main.c #指定产生执行文件需要的源文件,如果有多个,以空格隔开
+LDADD = $(ROOTDIR)/encrypt/libencrypt.a 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -858,8 +860,6 @@ uninstall-am: uninstall-binPROGRAMS
 
 
 export INCLUDES #使之变成全局变量
-
-#LDADD=$(ROOTDIR)/src/libmy_test.a（自己定义的静态库名称） #把src中的文件变成静态库的方式
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

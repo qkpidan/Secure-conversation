@@ -16,4 +16,4 @@ bin_PROGRAMS=kdccom #生成的目标文件
 
 kdccom_SOURCES=main.c #指定产生执行文件需要的源文件,如果有多个,以空格隔开
 
-#LDADD=$(ROOTDIR)/src/libmy_test.a（自己定义的静态库名称） #把src中的文件变成静态库的方式
+LDADD=$(ROOTDIR)/encrypt/libencrypt.a 

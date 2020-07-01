@@ -5,20 +5,19 @@ AUTOMAKE_OPTIONS=foreign
 AM_CPPFLAGS=-I../include  -lpthred
 AM_LDFLAGS= -w  
 
-noinst_LIBRARIES = librsa.a
+noinst_LIBRARIES = libencrypt.a
 
-noinst_HEADERS = librsa.h
+noinst_HEADERS = librsa.h libaes.h
 
-librsa_a_SOURCES = librsa.c
+libencrypt_a_SOURCES = librsa.c libaes.c
 
-librsa_a_LIBADD = @LDFLAGS@
+libencrypt_a_LIBADD = @LDFLAGS@
 
 #make install的可执行文件安装目录
 bindir=../bin
    
 #make 的可执行文件
 #bin_PROGRAMS= rsa
-    
 	 
 #可执行文件的依赖
 #=========  rsa  ==========
